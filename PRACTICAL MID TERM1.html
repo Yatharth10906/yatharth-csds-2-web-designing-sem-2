@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Sum of N numbers</title>
+    <style>
+        body {
+            background-color: lightgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: lightblue;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 {
+            color: black;
+            font-size: 22px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid;
+            border-radius: 6px;
+        }
+        button {
+            margin-top: 14px;
+            width: 100%;
+            padding: 10px;
+            background-color: orange;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 15px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SUM OF N NUMBERS</h1>
+        <input type="number" id="Nvalue" placeholder="Enter number ">
+        <button onclick="sum()" id="button">Submit</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function sum() {
+            let n = parseInt(document.getElementById("Nvalue").value);
+            let sum = 0;
+            for (let i = 1; i <= n; i++) {
+                sum += i;
+            }
+            document.getElementById("result").innerHTML = "The sum of first " + n + " natural numbers is " + sum;
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title id="title">Feedback Form</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: lightcyan;
+        }
+
+        form {
+            text-align: center;
+            border: 5px solid black;
+            padding: 30px;
+            width: 320px;
+            min-height: 70vh;
+            background-color: lightgray;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            margin: 8px 0 15px 0;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <h2>Online Feedback Form</h2>
+
+        <label>Name</label>
+        <input type="text" name="name" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Rating (1-5)</label>
+        <input type="number" name="rating" min="1" max="5" required>
+
+        <label>Gender</label>
+        <select name="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label>Date of Birth</label>
+        <input type="date" name="dob" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="dom.js"></script>
+
+</body>
+
+</html>

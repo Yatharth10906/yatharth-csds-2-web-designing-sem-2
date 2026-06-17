@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Employee Management</title>
+    <style>
+        /* Basic, believable student CSS */
+        body {
+            font-family: Arial;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .box {
+            background: white;
+            padding: 15px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Employee Management System</h2>
+
+    <div class="box">
+        <h3>Actions</h3>
+        <p>This version uses prompt() and alert() for input/output without DOM manipulation.</p>
+        <button onclick="addEmployee()">Add Employee</button>
+        <button onclick="displayAll()">Display All</button>
+        <button onclick="filterHighSalary()">Salary > 50000</button>
+        <button onclick="calculateTotalSalary()">Total Salary</button>
+        <button onclick="calculateAvgSalary()">Average Salary</button>
+        <button onclick="countByDepartment()">Count in Dept</button>
+    </div>
+
+    <script>
+        let employees = [];
+        
+        function addEmployee() {
+            let nameVal = prompt("Enter employee name:");
+            if (!nameVal) return;
+            
+            let idVal = prompt("Enter employee ID:");
+            if (!idVal) return;
+            
+            let salaryVal = parseFloat(prompt("Enter salary:"));
+            if (isNaN(salaryVal)) return alert("Invalid salary.");
+            
+            let deptVal = prompt("Enter department (IT, HR, Finance):");
+            if (!deptVal) return;
+
+            employees.push({
+                name: nameVal,
+                id: idVal,
+                salary: salaryVal,
+                department: deptVal
+            });
+
+            alert(nameVal + " added successfully!");
+        }
+
+        function displayAll() {
+            if (employees.length === 0) return alert("No employees in the system yet.");
+
+            let result = "All Employees:\n\n";
+            for (let emp of employees) {
+                result += "ID: " + emp.id + " | Name: " + emp.name + " | Dept: " + emp.department + " | Salary: ₹" + emp.salary + "\n";
+            }
+            alert(result);
+        }
+
+        function filterHighSalary() {
+            let highEarners = employees.filter(emp => emp.salary > 50000);
+
+            if (highEarners.length === 0) return alert("No employees found with salary > ₹50,000.");
+
+            let result = "Salary > ₹50,000:\n\n";
+            for (let emp of highEarners) {
+                result += "ID: " + emp.id + " | Name: " + emp.name + " | Dept: " + emp.department + " | Salary: ₹" + emp.salary + "\n";
+            }
+            alert(result);
+        }
+
+        function calculateTotalSalary() {
+            if (employees.length === 0) return alert("No employees in the system yet.");
+
+            let total = employees.reduce((acc, emp) => acc + emp.salary, 0);
+            alert("Total Salary Payout: ₹" + total);
+        }
+
+        function calculateAvgSalary() {
+            if (employees.length === 0) return alert("No employees in the system yet.");
+
+            let total = employees.reduce((acc, emp) => acc + emp.salary, 0);
+            let average = total / employees.length;
+
+            alert("Average Salary: ₹" + average.toFixed(2));
+        }
+
+        function countByDepartment() {
+            let targetDept = prompt("Enter department to count (e.g. IT, HR, Finance):");
+            if (!targetDept) return;
+
+            let deptEmployees = employees.filter(emp => emp.department.toLowerCase() === targetDept.toLowerCase());
+
+            alert("Count in " + targetDept + ": " + deptEmployees.length + " employee(s)");
+        }
+    </script>
+</body>
+
+</html>
