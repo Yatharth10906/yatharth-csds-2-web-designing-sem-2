@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Armstrong Number Checker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 350px;
+            margin: auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Armstrong Number Checker</h2>
+
+        <input type="number" id="number" placeholder="Enter a number">
+
+        <br>
+
+        <button onclick="checkArmstrong()">
+            Check
+        </button>
+
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function checkArmstrong() {
+            let num = document.getElementById("number").value;
+            let originalNum = num;
+            let sum = 0;
+
+            while (num > 0) {
+                let digit = num % 10;
+                sum = sum + digit * digit * digit;
+                num = Math.floor(num / 10);
+            }
+
+            if (sum == originalNum) {
+                document.getElementById("result").innerHTML =
+                    originalNum + " is an Armstrong Number";
+            } else {
+                document.getElementById("result").innerHTML =
+                    originalNum + " is NOT an Armstrong Number";
+            }
+        }
+    </script>
+
+</body>
+</html>
